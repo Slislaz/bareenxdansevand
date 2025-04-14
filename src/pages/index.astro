@@ -1,9 +1,10 @@
 ---
+import "../styles/style.css";
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/hero.astro";
-import Section from "../components/section.astro";
-import Kalender from "../components/kalender.astro";
-import Footer from "../components/footer.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import Kalender from "../components/Kalender.astro";
+import Footer from "../components/Footer.astro";
 
 const url = "https://ajnsprqmtlvuetsozhta.supabase.co/rest/v1/kalender";
 const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqbnNwcnFtdGx2dWV0c296aHRhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQzNTQ0NDksImV4cCI6MjA1OTkzMDQ0OX0.NRv8GWB4MMBwbsIqPiFEVw8L34CLPclghyrR0g9uWws";
@@ -16,7 +17,7 @@ const options = {
 ---
 
 <Layout>
-  <Hero />
+  <Hero/>
   <Section />
   <Kalender />
   <Footer />
