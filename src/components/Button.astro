@@ -1,0 +1,26 @@
+---
+const buttontext = Astro.props.buttontext;
+---
+
+
+<button>
+    <p>{buttontext}</p>
+</button>
+
+<style>
+    button {
+  background-color: #2a45ff;
+  padding: 8px 150px;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+button:hover {
+  background-color: #f8f8f8;
+  color: black;
+  transition: 300ms;
+  border: solid;
+  border-width: 1px;
+}
+</style>
