@@ -1,4 +1,5 @@
 ---
+import Button from "./Button.astro"
 ---
 
 <footer>
@@ -7,6 +8,12 @@
    <div>
     <h3>GÅ ALDRIG GLIP AF NOGET</h3>
     <h3>BLIV MEDLEM AF NYHEDSBREVET</h3>
+    <form>
+        <div class="input_box">
+        <input type="text" placeholder="E-mail">
+        </div>
+        <Button buttontext="BLIV MEDLEM"></button>
+    </form>
 </div>
 
 <div>
@@ -31,14 +38,28 @@
 .grid_2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 2rem;
+    padding: 3rem;
 }  
+
+input, 
+textarea {
+    background-color: black;
+    border: none;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
 
     dl {
         color: black;
         display: grid;
         grid-template-columns: 1fr 1fr;
         line-height: 1.5;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: small;
+        font-weight: bold;
     }
 
     h3 {
@@ -48,4 +69,5 @@
 .logo {
     width: 25%;
 }
+
 </style>
