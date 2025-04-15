@@ -1,0 +1,32 @@
+---
+import Card from "./Card.astro";
+import Button from "./Button.astro";
+---
+
+<div class="grid_1-1">
+  <div>
+    <Card headline="BAREEN DANS" text="Bareen x Dansevand inviterer dig til Bareen Dans. Fire uger med svedige moves, tunge beats og fællesskab med puls. Hver uge lander en ny dansestil: fra Hiphop og Afrobeats til House og Funk. Op til tre workshops om ugen, hvor stemningen minder mere om klub end fitnesscenter. Det handler ikke om at kunne trinene, det handler om at være med. Alle niveauer er velkomne, og ja, selvfølgelig er der iskold Dansevand til alle, der danser med. Men heads up: pladserne er få og fyldes hurtigt." />
+    <Button buttontext="TILMELD BAREEN DANS EVENT" />
+  </div>
+  <div>
+    <img src="/imgs/dansevand.webp" alt="Dansevand" />
+  </div>
+  <Card />
+</div>
+
+<div class="grid_1-1">
+  <div>
+    <img src="/imgs/bareenkasket.webp" alt="Bareen Kasket" />
+  </div>
+  <div>
+    <Card class="order" headline="LIMITED EDITION DROP" text="Drop det kedelige træningstøj og gør plads til noget med karakter. Som en del af Bareen Dans slipper vi en eksklusiv Limited Edition kollektion, designet til dancefloor og afterparty. Du kan svede i det, leve i det og se brandgodt ud imens. Skriv dig op for og få pre-acess når kollektionen dropper og snup dit favorit item før nogen andre." />
+    <Button buttontext="FÅ PRE-ACCESS" />
+  </div>
+</div>
+
+<style>
+  .grid_1-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+</style>
