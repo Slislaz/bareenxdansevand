@@ -2,18 +2,27 @@
 const buttontext = Astro.props.buttontext;
 ---
 
-
+<div class="button1">
 <button>
     <p>{buttontext}</p>
 </button>
-
+</div>
 <style>
+
+.button1 {
+  display: flex;
+  justify-content: center;
+padding-bottom: 3rem;
+}
+
     button {
   background-color: #2a45ff;
-  padding: 8px 150px;
+   width: 420px; /*fixed width*/
+  padding: 10px 0; 
   border: none;
   cursor: pointer;
   color: white;
+   white-space: nowrap;
 }
 
 button:hover {
