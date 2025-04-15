@@ -1,5 +1,4 @@
 ---
-import Button from "../components/Button.astro";
 const headline = Astro.props.headline;
 const text = Astro.props.text;
 ---
@@ -10,9 +9,21 @@ const text = Astro.props.text;
 
 <style>
   p {
-    color: black;
+    color: #525252;
+    padding-inline: 5rem;
+    padding-block: 2rem;
+    font-size: 20px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
   }
+
   h1 {
+    padding-top: 5rem;
     color: black;
+    text-align: center;
+    font-size: 35px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-style: italic;
   }
 </style>
