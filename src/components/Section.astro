@@ -1,12 +1,18 @@
 ---
 import Card from "./Card.astro";
 import Button from "./Button.astro";
+import Form from "./Form.astro";
 ---
 
 <div class="grid_1-1">
   <div>
     <Card headline="BAREEN DANS" text="Bareen x Dansevand inviterer dig til Bareen Dans. Fire uger med svedige moves, tunge beats og fællesskab med puls. Hver uge lander en ny dansestil: fra Hiphop og Afrobeats til House og Funk. Op til tre workshops om ugen, hvor stemningen minder mere om klub end fitnesscenter. Det handler ikke om at kunne trinene, det handler om at være med. Alle niveauer er velkomne, og ja, selvfølgelig er der iskold Dansevand til alle, der danser med. Men heads up: pladserne er få og fyldes hurtigt." />
-    <Button buttontext="TILMELD BAREEN DANS EVENT" />
+    <div class="show-form-btn" data-target="form1">
+      <Button buttontext="TILMELD BAREEN DANS EVENT" />
+    </div>
+    <div class="form-container form1" style="display: none;">
+      <Form />
+    </div>
   </div>
   <div>
     <div class="slideshow">
@@ -26,7 +32,12 @@ import Button from "./Button.astro";
 <div class="grid_1-1">
   <div class="order">
     <Card class="order" headline="LIMITED EDITION DROP" text="Drop det kedelige træningstøj og gør plads til noget med karakter. Som en del af Bareen Dans slipper vi en eksklusiv Limited Edition kollektion, designet til dancefloor og afterparty. Du kan svede i det, leve i det og se brandgodt ud imens. Skriv dig op for og få pre-acess når kollektionen dropper og snup dit favorit item før nogen andre." />
-    <Button buttontext="FÅ PRE-ACCESS" />
+    <div class="show-form-btn" data-target="form2">
+      <Button buttontext="FÅ PRE-ACCESS" />
+    </div>
+    <div class="form-container form2" style="display: none;">
+      <Form />
+    </div>
   </div>
 
   <div>
@@ -115,3 +126,22 @@ import Button from "./Button.astro";
     animation-delay: 8s;
   }
 </style>
+
+<!-- /********** From vis og vis ikke lavet med hjælp fra chatGPT **********/ -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".show-form-btn");
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetClass = btn.getAttribute("data-target");
+        const form = document.querySelector(`.form-container.${targetClass}`);
+
+        if (form) {
+          form.style.display = "block";
+          form.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+  });
+</script>
