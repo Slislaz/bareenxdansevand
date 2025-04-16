@@ -27,15 +27,11 @@ const { date, title, limited, location, image, place, time, billet } = Astro.pro
 </div>
 
 <style>
-  /* Generelle stilarter */
-
+  /* === Generelt layout === */
   .calendar {
     background-color: black;
     color: black;
-    padding-top: 8rem;
-    padding-bottom: 8rem;
-    padding-right: 2rem;
-    padding-left: 2rem;
+    padding: 8rem 2rem;
     margin: auto;
   }
 
@@ -58,104 +54,20 @@ const { date, title, limited, location, image, place, time, billet } = Astro.pro
     text-align: center;
   }
 
-  /* Kalender row */
+  /* === Event-row (desktop default) === */
   .event-row {
     color: black;
-    padding-left: 4rem;
-    padding-right: 4rem;
-    font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    padding: 5px 4rem;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr 2fr auto;
     align-items: center;
     border-top: 1px solid #c4c4c4;
-    padding-top: 5px;
     position: relative;
   }
 
-  .event-left img {
-    width: 70%; /* Skalerer billedet til containerens bredde */
-    height: auto; /* Bevarer højden i forhold til bredden */
-    object-fit: contain; /* Sørger for, at billedet tilpasses uden at blive beskåret */
-  }
-
-  /* toggle funktion på desktop */
-  @media (min-width: 769px) {
-    .event-row:hover .event-info {
-      max-height: 700px;
-      opacity: 1;
-    }
-
-    img {
-      padding: 1rem;
-    }
-
-    .event-info {
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: all 0.3s ease;
-      grid-column: 1 / -1;
-      background-color: white;
-      padding: 1rem 0;
-      font-size: 12px;
-    }
-
-    .toggle-info-btn {
-      display: none; /* Skjul plus-knap på desktop */
-    }
-  }
-
-  /* Event-info (foldes ud) */
-  .event-info {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: all 0.4s ease;
-    grid-column: 1 / -1;
-    background-color: white;
-    padding: 1rem 0;
-    box-shadow: none;
-    font-size: 14px;
-  }
-
-  /* Info grid struktur */
-  .event-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 1rem;
-  }
-
-  /* Venstre side */
-  .event-left h4 {
-    margin: 0 0 0.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-  }
-
-  .event-left p {
-    margin: 0;
-    color: #333;
-  }
-
-  /* Højre side */
-  .event-right p {
-    margin: 0 0 0.5rem;
-    text-align: right;
-  }
-
-  .event-right h4 {
-    margin: 0 0 0.5rem;
-    text-align: right;
-  }
-
-  .event-right a {
-    color: #000;
-    text-decoration: underline;
-    font-weight: 500;
-  }
-
-  /* Dato */
+  /* === Dato + badge === */
   .date {
     font-size: 18px;
     border-radius: 50%;
@@ -164,20 +76,19 @@ const { date, title, limited, location, image, place, time, billet } = Astro.pro
     justify-content: start;
   }
 
-  /* Limited badge */
   .limited {
     margin-top: 0.2rem;
     color: #121212;
-    display: flex;
-    justify-content: center;
-    font-size: 0.75rem;
     background-color: rgb(234, 234, 234);
+    font-size: 0.75rem;
     padding: 7px 16px;
     max-width: 76px;
     border-radius: 16px;
+    display: flex;
+    justify-content: center;
   }
 
-  /* Tilmeld knap */
+  /* === Tilmeld-knap === */
   .btn-tilmeld {
     text-decoration: none;
     font-size: 0.85rem;
@@ -192,69 +103,105 @@ const { date, title, limited, location, image, place, time, billet } = Astro.pro
   .btn-tilmeld:hover {
     background-color: #f8f8f8;
     color: black;
-    transition: 300ms;
-    border: solid;
-    border-width: 1px;
+    border: 1px solid black;
   }
 
-  /* Mobil-visning */
-  @media (max-width: 768px) {
-    .location {
+  /* === Event info (udfoldet panel) === */
+  .event-info {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    grid-column: 1 / -1;
+    padding: 1rem 0;
+    transition: all 0.4s ease;
+    font-size: 14px;
+  }
+
+  /* === Grid i udfoldet event === */
+  .event-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .event-left img {
+    width: 50%;
+    height: auto;
+    object-fit: contain;
+    padding: 1rem;
+  }
+
+  .event-left h4 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .event-right h4,
+  .event-right p {
+    margin: 0 0 0.5rem;
+    text-align: right;
+  }
+
+  /* === Toggle-knap === */
+  .toggle-info-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    display: none; /* Skjules på desktop */
+  }
+
+  /* === Desktop hover-funktion === */
+  @media (min-width: 769px) {
+    .event-row:hover .event-info {
+      max-height: 700px;
+      opacity: 1;
+    }
+
+    .toggle-info-btn {
       display: none;
+    }
+  }
+
+  /* === Mobil-visning === */
+  @media (max-width: 768px) {
+    .calendar {
+      padding: 8rem 0.2rem;
+    }
+
+    .event-row {
+      font-size: 14px;
+      padding: 5px 0.5rem;
+      grid-template-columns: 1fr 2fr 1fr 1fr auto;
+      gap: 10px;
+      border-top: 1px solid #000;
     }
 
     .date {
       font-size: 14px;
     }
 
-    .event-row {
-      color: black;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-      font-size: 14px;
-    }
-
-    .limited {
+    .limited,
+    .location {
       display: none;
     }
 
-    .calendar {
-      padding-right: 0.2rem;
-      padding-left: 0.2rem;
-      margin: auto;
-    }
-
-    .event-row {
-      display: grid;
-      grid-template-columns: 1fr 2fr 1fr 1fr auto;
-      gap: 10px;
-      align-items: center;
-      border-top: 1px solid #000000;
-      padding-top: 5px;
-      position: relative;
-    }
-
-    .event-info img {
+    .event img {
       max-width: 160px;
+      z-index: 100;
     }
 
-    /* Plus-knap vises kun på mobil */
     .toggle-info-btn {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      margin-left: 1rem;
-      display: inline-block; /* Vist på mobil */
+      display: inline-block;
     }
 
     .event-info {
       max-height: 0;
       opacity: 0;
-      transition: all 0.4s ease;
     }
 
-    /* Åben info ved klik på plus-knap */
     .event-row.open .event-info {
       max-height: 500px;
       opacity: 1;
