@@ -1,80 +1,80 @@
 ---
-import Button from "./Button.astro"
+import Button from "./Button.astro";
 ---
 
-    <form action="/subscribe" method="POST" class="email-form">
-    <div class="input-wrapper">
-        <input type="text" name="name" id="name" placeholder=" " required />
-        <label for="name">NAVN</label>
-    </div>
+<form action="/subscribe" method="POST" class="email-form">
+  <div class="input-wrapper">
+    <input type="text" name="name" id="name" placeholder=" " required />
+    <label for="name">NAVN</label>
+  </div>
 
-    <div class="input-wrapper">
-        <input type="email" name="email" id="email" placeholder=" " required />
-        <label for="email">E-MAIL</label>
-    </div>
+  <div class="input-wrapper">
+    <input type="email" name="email" id="email" placeholder=" " required />
+    <label for="email">E-MAIL</label>
+  </div>
 
-        <div class="input-wrapper">
-        <input type="tel" name="phone" id="phone" placeholder=" " required />
-        <label for="phone">TELEFONNUMMER</label>
-    </div>
+  <div class="input-wrapper">
+    <input type="tel" name="phone" id="phone" placeholder=" " required />
+    <label for="phone">TELEFONNUMMER</label>
+  </div>
 
-        <Button buttontext="BLIV MEDLEM"></button>
-    </form>
+  <Button buttontext="SEND" />
+</form>
 
 <style>
+  /* FORM */
 
-/* FORM */  
+  .email-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
 
-.email-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-}
+  .input-wrapper {
+    position: relative;
+    width: 350px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 
-.input-wrapper {
-  position: relative;
-  width: 350px;
-  font-family: Arial, Helvetica, sans-serif;
-}
+  .input-wrapper input {
+    width: 100%;
+    padding: 16px 12px 8px; /* extra top padding for label space */
+    font-size: 14px;
+    border: none;
+    background-color: black;
+    color: white;
+    box-sizing: border-box;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
 
-.input-wrapper input {
-  width: 100%;
-  padding: 16px 12px 8px; /* extra top padding for label space */
-  font-size: 14px;
-  border: none;
-  background-color: black;
-  color: white;
-  box-sizing: border-box;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
+  /* focus state */
+  .input-wrapper input:focus {
+    background-color: white;
+    color: black;
+    outline: none;
+    border: solid 1px;
+  }
 
-/* focus state */
-.input-wrapper input:focus {
-  background-color: white;
-  color: black;
-  outline: none;
-  border: solid 1px;
-}
+  .input-wrapper label {
+    position: absolute;
+    top: 14px;
+    left: 12px;
+    color: white;
+    font-size: 14px;
+    pointer-events: none;
+    transition: all 0.2s ease;
+  }
 
-.input-wrapper label {
-  position: absolute;
-  top: 14px;
-  left: 12px;
-  color: white;
-  font-size: 14px;
-  pointer-events: none;
-  transition: all 0.2s ease;
-}
+  /* FLOATING EFFECT: when input has focus or text */
+  .input-wrapper input:focus + label,
+  .input-wrapper input:not(:placeholder-shown) + label {
+    top: 3px;
+    font-size: 9px;
+    color: black;
+  }
 
-/* FLOATING EFFECT: when input has focus or text */
-.input-wrapper input:focus + label,
-.input-wrapper input:not(:placeholder-shown) + label {
-  top: 3px;
-  font-size: 9px;
-  color: black;
-}
-
-/* FORM SLUT */
-
+  /* FORM SLUT */
 </style>
