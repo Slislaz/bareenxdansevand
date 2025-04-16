@@ -5,14 +5,17 @@ import Button from "./Button.astro"
 
 <footer>
     <hr>
+<div class="content">
     <div class="grid_2">
    <div>
-    <h3>GÅ ALDRIG GLIP AF NOGET</h3>
+    <h4>GÅ ALDRIG GLIP AF NOGET</h4>
     <h3>BLIV MEDLEM AF NYHEDSBREVET</h3>
-    <form>
-        <div class="input_box">
-        <input type="text" placeholder="E-mail">
-        </div>
+    <p>Tilmeld dig vores nyhedsbrev for at holde dig opdateret på nye drops og Bareen Dans events</p>
+    <form action="/subscribe" method="POST" class="email-form">
+    <div class="input-wrapper">
+        <input type="email" name="email" id="email" placeholder=" " required />
+        <label for="email">E-MAIL</label>
+    </div>
         <Button buttontext="BLIV MEDLEM"></button>
     </form>
 </div>
@@ -25,50 +28,145 @@ import Button from "./Button.astro"
         <dt>Weekend & helligdage</dt>
         <dd>Lukket</dd>
     </dl>
+
+<div class="grid_3">
+<div class="icon">
+    <a href="https://www.facebook.com/bareentshirt"><img src="/icons/facebook.svg" alt="Facebook"></a>
+    </div>
+    <div class="icon">
+        <a href="https://www.instagram.com/bareen/"> <img src="/icons/instagram.svg" alt="Instagram"></a>
+</div>
       <div class="logo">
     <a href="index.astro">
       <img src="/src/components/imgs/logo.svg" alt="Logo" />
     </a>
   </div>
+  </div>
+
+</div>
 </div>
 </div>
 </footer>
 
 <style>
 
-.grid_2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 3rem;
-}  
-
-input, 
-textarea {
-    background-color: black;
-    border: none;
-    padding: 8px;
-    width: 100%;
-    box-sizing: border-box;
+.content {
+    padding: 2rem;
 }
 
+    h3 {
+        color: black;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 10px 0;
+        text-align: center;
+    }
 
+    h4 {
+        color: black;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: lighter;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+p {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-small;
+    padding-bottom: 25px;
+    text-align: center;
+}
+
+/* FORM */  
+
+.email-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 350px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 16px 12px 8px; /* extra top padding for label space */
+  font-size: 14px;
+  border: none;
+  background-color: black;
+  color: white;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* focus state */
+.input-wrapper input:focus {
+  background-color: white;
+  color: black;
+  outline: none;
+  border: solid 1px;
+}
+
+.input-wrapper label {
+  position: absolute;
+  top: 14px;
+  left: 12px;
+  color: white;
+  font-size: 14px;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+/* FLOATING EFFECT: when input has focus or text */
+.input-wrapper input:focus + label,
+.input-wrapper input:not(:placeholder-shown) + label {
+  top: 3px;
+  font-size: 9px;
+  color: black;
+}
+
+/* FORM SLUT */
 
     dl {
         color: black;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        line-height: 1.5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 2;
         font-family: Arial, Helvetica, sans-serif;
         font-size: small;
         font-weight: bold;
     }
 
-    h3 {
-        color: black;
-        font-family: Arial, Helvetica, sans-serif;
-    }
+
 .logo {
-    width: 25%;
+    max-width: 25%;
+    height: auto;
 }
+.icon {
+    max-width: 30px;
+    height: auto;
+}
+
+.grid_3 {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+  @media (min-width: 768px) {
+.grid_2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 3rem;
+    justify-content: baseline;
+    }  
+  }
 
 </style>
