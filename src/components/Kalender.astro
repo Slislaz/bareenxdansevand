@@ -1,189 +1,30 @@
 ---
+import EventCard from "./EventCard.astro";
+import Card from "./Card.astro";
 import Button from "./Button.astro";
 ---
 
-<!-- <hr style="border: none; height: 1px; background-color: black; width: 100vw;" /> -->
 <div class="calendar">
-  <h2>BAREEN DANS KALENDER</h2>
-  <p>Tjek vores dansekalender ud og find den workshop, der passer dig</p>
+  <div>
+    <Card headline="DANSEVAND MED BAREEN" text="Bareen x Dansevand inviterer til fest. Kom og vær med til en aften fyldt med hiphop beats, god stemning og iskolde Dansevand. " />
+  </div>
 
-  <!-- May 6 -->
-  <div class="calendar-section">
-    <div class="event-row">
-      <div>06 MAJ</div>
-      <div><strong>HIPHOP DANCE WORKSHOP</strong></div>
-      <div class="limited">Limited</div>
-      <div class="location">DANSEKAPELLET</div>
-      <a class="btn-tilmeld" href="#">TILMELD</a>
-    </div>
-    <div class="event-row">
-      <div>07 MAJ</div>
-      <div><strong>HIPHOP DANCE WORKSHOP</strong></div>
-      <div class="limited">Limited</div>
-      <div class="location">DANSEKAPELLET</div>
-      <a class="btn-tilmeld" href="#">TILMELD</a>
-    </div>
-    <div class="event-row">
-      <div>08 MAJ</div>
-      <div><strong>HIPHOP DANCE WORKSHOP</strong></div>
-      <div class="limited">Limited</div>
-      <div class="location">DANSEKAPELLET</div>
-      <a class="btn-tilmeld" href="#">TILMELD</a>
+  <div class="calendar">
+    <!-- <h2>BAREEN DANS KALENDER</h2>
+    <p>Tjek vores dansekalender ud og find den workshop, der passer dig</p> -->
+
+    <div class="calendar-section">
+      <EventCard date="6 MAJ" title="HIPHOP NIGHT" limited="Limited" location="NØRREBROHALLEN" image="imgs/event1.webp" place="NØRREBROHALLEN" time="18:00 – 20:00" billet="Limited" />
+      <EventCard date="7 MAJ" title="HIPHOP NIGHT" limited="Limited" location="NØRREBROHALLEN" image="imgs/event2.webp" place="NØRREBROHALLEN" time="18:00 – 20:00" billet="Limited" />
+      <EventCard date="8 MAJ" title="HIPHOP NIGHT" limited="Limited" location="NØRREBROHALLEN" image="imgs/event3.webp" place="NØRREBROHALLEN" time="18:00 – 20:00" billet="Limited" />
+      <EventCard date="15 MAJ" title="HOUSE DANCE WORKSHOP" limited="Limited" location="NØRREBROHALLEN" image="imgs/event4.webp" place="NØRREBROHALLEN" time="18:00 – 20:00" billet="Limited" />
+      <EventCard date="16 MAJ" title="HOUSE DANCE WORKSHOP" limited="Limited" location="NØRREBROHALLEN" image="imgs/event5.webp" place="NØRREBROHALLEN" time="18:00 – 20:00" billet="Limited" />
+      <EventCard date="17 MAJ" title="HOUSE DANCE WORKSHOP" limited="Limited" location="NØRREBROHALLEN" image="imgs/event6.webp" place="NØRREBROHALLEN" time="18:00 – 20:00" billet="Limited" />
+      <EventCard date="15 MAJ" title="HOUSE DANCE WORKSHOP" limited="Limited" location="NØRREBROHALLEN" image="imgs/event7.webp" place="XX" time="18:00 – 20:00" billet="Limited" />
+      <EventCard date="16 MAJ" title="HOUSE DANCE WORKSHOP" limited="Limited" location="NØRREBROHALLEN" image="imgs/event1.webp" place="XX" time="18:00 – 20:00" billet="Limited" />
+      <EventCard date="17 MAJ" title="HOUSE DANCE WORKSHOP" limited="Limited" location="NØRREBROHALLEN" image="imgs/event1.webp" place="XX" time="18:00 – 20:00" billet="Limited" />
     </div>
   </div>
 
-  <!-- May 14 -->
-  <div class="calendar-section">
-    <div class="event-row">
-      <div>14 MAJ</div>
-      <div><strong>HOUSE DANCE WORKSHOP</strong></div>
-      <div class="limited">Limited</div>
-      <div class="location">NØRREBROHALLEN</div>
-      <a class="btn-tilmeld" href="#">TILMELD</a>
-    </div>
-    <div class="event-row">
-      <div>15 MAJ</div>
-      <div><strong>HOUSE DANCE WORKSHOP</strong></div>
-      <div class="limited">Limited</div>
-      <div class="location">NØRREBROHALLEN</div>
-      <a class="btn-tilmeld" href="#">TILMELD</a>
-    </div>
-    <div class="event-row">
-      <div>16 MAJ</div>
-      <div><strong>HOUSE DANCE WORKSHOP</strong></div>
-      <div class="limited">Limited</div>
-      <div class="location">NØRREBROHALLEN</div>
-      <a class="btn-tilmeld" href="#">TILMELD</a>
-    </div>
-  </div>
-
-  <!-- May 20 -->
-  <div class="calendar-section">
-    <div class="event-row">
-      <div>20 MAJ</div>
-      <div><strong>AFROBEATS DANCE WORKSHOP</strong></div>
-      <div class="limited">Limited</div>
-      <div class="location">ØKSNEHALLEN</div>
-      <a class="btn-tilmeld" href="#">TILMELD</a>
-    </div>
-    <div class="event-row">
-      <div>21 MAJ</div>
-      <div><strong>AFROBEATS DANCE WORKSHOP</strong></div>
-      <div class="limited">Limited</div>
-      <div class="location">ØKSNEHALLEN</div>
-      <a class="btn-tilmeld" href="#">TILMELD</a>
-    </div>
-    <div class="event-row">
-      <div>22 MAJ</div>
-      <div><strong>AFROBEATS DANCE WORKSHOP</strong></div>
-      <div class="limited">Limited</div>
-      <div class="location">ØKSNEHALLEN</div>
-      <a class="btn-tilmeld" href="#">TILMELD</a>
-    </div>
-  </div>
-
-  <style>
-    .calendar {
-      color: black;
-      padding-top: 10rem;
-      padding-bottom: 10rem;
-      padding-right: 2rem;
-      padding-left: 2rem;
-      /* max-width: 900px; */
-      margin: auto;
-    }
-
-    .calendar-section:first-of-type {
-      margin-top: 3rem; /* adjust spacing as needed */
-    }
-
-    .date {
-      font-size: 0.75rem;
-    }
-
-    .calendar h2 {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 2rem;
-      text-align: center;
-      font-style: italic;
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
-
-    .calendar p {
-      font-family: Arial, Helvetica, sans-serif;
-      text-align: center;
-    }
-
-    /* .calendar-section {
-      padding-top: 4rem;
-      margin-bottom: 2rem;
-    } */
-
-    .limited {
-      margin-top: 0.2rem;
-      color: #121212;
-      display: flex;
-      justify-content: center;
-      font-size: 0.75rem;
-      background-color: rgb(234, 234, 234);
-      padding: 7px 16px;
-      max-width: 76px;
-      border-radius: 16px;
-    }
-
-    .location {
-      font-family: Arial, Helvetica, sans-serif;
-      /* font-style: italic; */
-      font-size: 0.75rem;
-    }
-
-    .event-row {
-      font-size: 18px;
-      font-family: Arial, Helvetica, sans-serif;
-      display: grid;
-      grid-template-columns: 1fr 2fr 1fr 2fr auto;
-      align-items: center;
-      border-top: 1px solid #000000;
-      padding-top: 0.1rem;
-      padding-bottom: 0.6rem;
-    }
-
-    /* .event-row:last-child {
-    border-bottom: 1px solid #ddd;
-  } */
-
-    .event-row strong {
-      font-weight: bold;
-    }
-
-    .btn-tilmeld {
-      text-decoration: none;
-      font-size: 0.85rem;
-      background-color: #0f62fe;
-      padding: 0.4rem 0.75rem;
-      border: none;
-      cursor: pointer;
-      color: white;
-      transition: background-color 0.2s ease;
-      font-family: Arial, Helvetica, sans-serif;
-
-      /* background-color: #0f62fe;
-      color: white;
-      padding: 0.4rem 0.75rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 600;
-      transition: background-color 0.2s ease; */
-    }
-
-    .btn-tilmeld:hover {
-      background-color: #f8f8f8;
-      color: black;
-      transition: 300ms;
-      border: solid;
-      border-width: 1px;
-    }
-  </style>
+  <script type="module" src="/eventToggle.js"></script>
 </div>

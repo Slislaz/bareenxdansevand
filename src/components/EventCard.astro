@@ -1,0 +1,263 @@
+---
+// Props du kan sende til komponenten
+const { date, title, limited, location, image, place, time, billet } = Astro.props;
+---
+
+<div class="event-row">
+  <div class="date">{date}</div>
+  <div><strong>{title}</strong></div>
+  <div class="limited">{limited}</div>
+  <div class="location">{location}</div>
+  <button class="toggle-info-btn">+</button>
+  <a class="btn-tilmeld" href="#">TILMELD</a>
+
+  <div class="event-info">
+    <div class="event-grid">
+      <div class="event-left">
+        <img src={image} alt={title} />
+      </div>
+      <div class="event-right">
+        <h4>{title}</h4>
+        <p>{place}</p>
+        <p>{time}</p>
+        <p><strong>Billettype:</strong> {billet}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Generelle stilarter */
+
+  .calendar {
+    background-color: black;
+    color: black;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    margin: auto;
+  }
+
+  .calendar-section:first-of-type {
+    margin-top: 3rem;
+  }
+
+  .calendar h2 {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    font-style: italic;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .calendar p {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+  }
+
+  /* Kalender row */
+  .event-row {
+    color: black;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr auto;
+    align-items: center;
+    border-top: 1px solid #c4c4c4;
+    padding-top: 5px;
+    position: relative;
+  }
+
+  .event-left img {
+    width: 70%; /* Skalerer billedet til containerens bredde */
+    height: auto; /* Bevarer højden i forhold til bredden */
+    object-fit: contain; /* Sørger for, at billedet tilpasses uden at blive beskåret */
+  }
+
+  /* toggle funktion på desktop */
+  @media (min-width: 769px) {
+    .event-row:hover .event-info {
+      max-height: 700px;
+      opacity: 1;
+    }
+
+    img {
+      padding: 1rem;
+    }
+
+    .event-info {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: all 0.3s ease;
+      grid-column: 1 / -1;
+      background-color: white;
+      padding: 1rem 0;
+      font-size: 12px;
+    }
+
+    .toggle-info-btn {
+      display: none; /* Skjul plus-knap på desktop */
+    }
+  }
+
+  /* Event-info (foldes ud) */
+  .event-info {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.4s ease;
+    grid-column: 1 / -1;
+    background-color: white;
+    padding: 1rem 0;
+    box-shadow: none;
+    font-size: 14px;
+  }
+
+  /* Info grid struktur */
+  .event-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 1rem;
+  }
+
+  /* Venstre side */
+  .event-left h4 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .event-left p {
+    margin: 0;
+    color: #333;
+  }
+
+  /* Højre side */
+  .event-right p {
+    margin: 0 0 0.5rem;
+    text-align: right;
+  }
+
+  .event-right h4 {
+    margin: 0 0 0.5rem;
+    text-align: right;
+  }
+
+  .event-right a {
+    color: #000;
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  /* Dato */
+  .date {
+    font-size: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+  }
+
+  /* Limited badge */
+  .limited {
+    margin-top: 0.2rem;
+    color: #121212;
+    display: flex;
+    justify-content: center;
+    font-size: 0.75rem;
+    background-color: rgb(234, 234, 234);
+    padding: 7px 16px;
+    max-width: 76px;
+    border-radius: 16px;
+  }
+
+  /* Tilmeld knap */
+  .btn-tilmeld {
+    text-decoration: none;
+    font-size: 0.85rem;
+    background-color: #0f62fe;
+    padding: 0.4rem 0.75rem;
+    border: none;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.2s ease;
+  }
+
+  .btn-tilmeld:hover {
+    background-color: #f8f8f8;
+    color: black;
+    transition: 300ms;
+    border: solid;
+    border-width: 1px;
+  }
+
+  /* Mobil-visning */
+  @media (max-width: 768px) {
+    .location {
+      display: none;
+    }
+
+    .date {
+      font-size: 14px;
+    }
+
+    .event-row {
+      color: black;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      font-size: 14px;
+    }
+
+    .limited {
+      display: none;
+    }
+
+    .calendar {
+      padding-right: 0.2rem;
+      padding-left: 0.2rem;
+      margin: auto;
+    }
+
+    .event-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr 1fr auto;
+      gap: 10px;
+      align-items: center;
+      border-top: 1px solid #000000;
+      padding-top: 5px;
+      position: relative;
+    }
+
+    .event-info img {
+      max-width: 160px;
+    }
+
+    /* Plus-knap vises kun på mobil */
+    .toggle-info-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-left: 1rem;
+      display: inline-block; /* Vist på mobil */
+    }
+
+    .event-info {
+      max-height: 0;
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    /* Åben info ved klik på plus-knap */
+    .event-row.open .event-info {
+      max-height: 500px;
+      opacity: 1;
+    }
+  }
+</style>
