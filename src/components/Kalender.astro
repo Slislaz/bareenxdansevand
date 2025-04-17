@@ -1,30 +1,34 @@
 ---
+// Importer nødvendige komponenter
 import EventCard from "./EventCard.astro";
 import Card from "./Card.astro";
-import Button from "./Button.astro";
+
+// Hent data fra Supabase
+// Hent data fra Supabase
+const response = await fetch("https://ajnsprqmtlvuetsozhta.supabase.co/rest/v1/kalender?select=dato,limited,lokation,workshop_type", {
+  headers: {
+    apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqbnNwcnFtdGx2dWV0c296aHRhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQzNTQ0NDksImV4cCI6MjA1OTkzMDQ0OX0.NRv8GWB4MMBwbsIqPiFEVw8L34CLPclghyrR0g9uWws", // Din Supabase API-nøgle
+    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqbnNwcnFtdGx2dWV0c296aHRhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQzNTQ0NDksImV4cCI6MjA1OTkzMDQ0OX0.NRv8GWB4MMBwbsIqPiFEVw8L34CLPclghyrR0g9uWws", // Din Supabase Authorization Bearer Token
+  },
+});
+
+if (!response.ok) {
+  console.error("Fejl ved anmodning:", response.statusText);
+  return;
+}
+
+const events = await response.json();
+console.log(events);
 ---
 
 <div class="calendar">
   <div>
-    <Card headline="DANSEVAND MED BAREEN" text="Bareen x Dansevand inviterer til fest. Kom og vær med til en aften fyldt med hiphop beats, god stemning og iskolde Dansevand. " />
+    <Card headline="DANSEVAND MED BAREEN" text="Bareen x Dansevand inviterer til fest. Kom og vær med til en aften fyldt med hiphop beats, god stemning og iskolde Dansevand." />
   </div>
 
-  <div class="calendar">
-    <!-- <h2>BAREEN DANS KALENDER</h2>
-    <p>Tjek vores dansekalender ud og find den workshop, der passer dig</p> -->
-
-    <div class="calendar-section">
-      <EventCard date="6 MAJ" title="HIPHOP NIGHT" limited="Limited" location="NØRREBROHALLEN" image="imgs/event1.webp" place="NØRREBROHALLEN" time="18:00 – 20:00" billet="Limited" />
-      <EventCard date="7 MAJ" title="HIPHOP NIGHT" limited="Limited" location="NØRREBROHALLEN" image="imgs/event2.webp" place="NØRREBROHALLEN" time="18:00 – 20:00" billet="Limited" />
-      <EventCard date="8 MAJ" title="HIPHOP NIGHT" limited="Limited" location="NØRREBROHALLEN" image="imgs/event3.webp" place="NØRREBROHALLEN" time="18:00 – 20:00" billet="Limited" />
-      <EventCard date="15 MAJ" title="HOUSE DANCE WORKSHOP" limited="Limited" location="NØRREBROHALLEN" image="imgs/event4.webp" place="NØRREBROHALLEN" time="18:00 – 20:00" billet="Limited" />
-      <EventCard date="16 MAJ" title="HOUSE DANCE WORKSHOP" limited="Limited" location="NØRREBROHALLEN" image="imgs/event5.webp" place="NØRREBROHALLEN" time="18:00 – 20:00" billet="Limited" />
-      <EventCard date="17 MAJ" title="HOUSE DANCE WORKSHOP" limited="Limited" location="NØRREBROHALLEN" image="imgs/event6.webp" place="NØRREBROHALLEN" time="18:00 – 20:00" billet="Limited" />
-      <EventCard date="15 MAJ" title="HOUSE DANCE WORKSHOP" limited="Limited" location="NØRREBROHALLEN" image="imgs/event7.webp" place="XX" time="18:00 – 20:00" billet="Limited" />
-      <EventCard date="16 MAJ" title="HOUSE DANCE WORKSHOP" limited="Limited" location="NØRREBROHALLEN" image="imgs/event1.webp" place="XX" time="18:00 – 20:00" billet="Limited" />
-      <EventCard date="17 MAJ" title="HOUSE DANCE WORKSHOP" limited="Limited" location="NØRREBROHALLEN" image="imgs/event1.webp" place="XX" time="18:00 – 20:00" billet="Limited" />
-    </div>
+  <div class="calendar-section">
+    {events.map((event) => <EventCard dato={event.dato} workshop_type={event.workshop_type} limited={event.limited} lokation={event.lokation} />)}
   </div>
-
-  <script type="module" src="/eventToggle.js"></script>
 </div>
+
+<script type="module" src="/eventToggle.js"></script>
