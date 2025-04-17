@@ -1,26 +1,29 @@
 ---
-// Props du kan sende til komponenten
-const { date, title, limited, location, image, place, time, billet } = Astro.props;
+const { dato, workshop_type, limited, lokation } = Astro.props;
 ---
 
 <div class="event-row">
-  <div class="date">{date}</div>
-  <div><strong>{title}</strong></div>
+  <div class="date">{dato}</div>
+  <!-- dato er fra Supabase -->
+  <div><strong>{workshop_type}</strong></div>
+  <!-- workshop_type er titlen -->
   <div class="limited">{limited}</div>
-  <div class="location">{location}</div>
+  <!-- limited er billettype -->
+  <div class="location">{lokation}</div>
+  <!-- lokation -->
   <button class="toggle-info-btn">+</button>
   <a class="btn-tilmeld" href="#">TILMELD</a>
 
   <div class="event-info">
     <div class="event-grid">
       <div class="event-left">
-        <img src={image} alt={title} />
+        <!-- <img src={image} alt={workshop_type} /> OBS! MANGLER BILLEDER -->
       </div>
       <div class="event-right">
-        <h4>{title}</h4>
-        <p>{place}</p>
-        <p>{time}</p>
-        <p><strong>Billettype:</strong> {billet}</p>
+        <h4>{workshop_type}</h4>
+        <p>{lokation}</p>
+        <p>{dato}</p>
+        <p><strong>Billettype:</strong> {limited}</p>
       </div>
     </div>
   </div>
@@ -29,7 +32,6 @@ const { date, title, limited, location, image, place, time, billet } = Astro.pro
 <style>
   /* === Generelt layout === */
   .calendar {
-    background-color: black;
     color: black;
     padding: 8rem 2rem;
     margin: auto;
